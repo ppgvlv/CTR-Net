@@ -17,7 +17,7 @@ def get_args_parser():
     parser.add_argument('--max-lr', default=1e-3, type=float, help='learning rate')
     parser.add_argument('--weight-decay', default=5e-1, type=float, help='weight decay')
     parser.add_argument('--use-wandb', action='store_true', default=False, help = 'wheteher use wandb, otherwise use tensorboard')
-    parser.add_argument('--exp-name',type=str, default='IAM_HTR_ORIGAMI_NET', help='experimental name (save dir will be out_dir + exp_name)')
+    parser.add_argument('--exp-name',type=str, default='LSHC_HTR_ORIGAMI_NET', help='experimental name (save dir will be out_dir + exp_name)')
     parser.add_argument('--seed', default=123, type=int, help='seed for initializing training. ')
 
     parser.add_argument('--img-size', default=[512, 64], type=int, nargs='+', help='image size')
@@ -66,72 +66,21 @@ def get_args_parser():
 
     subparsers = parser.add_subparsers(title="dataset setting", dest="subcommand")
 
-    IAM = subparsers.add_parser("IAM",
-                                description='Dataset parser for training on IAM',
+    LSHC = subparsers.add_parser("LSHC",
+                                description='Dataset parser for training on LSHC',
                                 add_help=True,
                                 formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                help="Dataset parser for training on IAM")
+                                help="Dataset parser for training on LSHC")
 
-    IAM.add_argument('--train-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/IAM/train.ln',
+    LSHC.add_argument('--train-data-list', type=str, default='/home/jLSHCingshi/OCR_datasets_int/LSHC/train.ln',
                      help='train data list (gc file)(ln file)')
-    IAM.add_argument('--data-path', type=str, default='/home/jiamingshi/OCR_datasets_int/IAM/lines/',
+    LSHC.add_argument('--data-path', type=str, default='/home/jLSHCingshi/OCR_datasets_int/LSHC/lines/',
                      help='train data list')
-    IAM.add_argument('--val-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/IAM/validation.ln',
+    LSHC.add_argument('--val-data-list', type=str, default='/home/jLSHCingshi/OCR_datasets_int/LSHC/validation.ln',
                      help='val data list')
-    IAM.add_argument('--test-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/IAM/test.ln',
+    LSHC.add_argument('--test-data-list', type=str, default='/home/jLSHCingshi/OCR_datasets_int/LSHC/test.ln',
                      help='test data list')
-    IAM.add_argument('--nb-cls', default=235, type=int, help='nb of classes, IAM=79+1, READ2016=89+1')
-
-    READ1 = subparsers.add_parser("READ1",
-                                 description='Dataset parser for training on READ',
-                                 add_help=True,
-                                 formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                 help="Dataset parser for training on READ")
-
-    READ1.add_argument('--train-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/LAM/train.ln',
-                      help='train data list (gc file)(ln file)')
-    READ1.add_argument('--data-path', type=str, default='/home/jiamingshi/OCR_datasets_int/LAM/lines/',
-                      help='train data list')
-    READ1.add_argument('--val-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/LAM/val.ln',
-                      help='val data list')
-    READ1.add_argument('--test-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/LAM/test.ln',
-                      help='test data list')
-    # READ.add_argument('--nb-cls', default=235, type=int, help='nb of classes, IAM=79+1, READ2016=89+1')
-
-    READ1.add_argument('--nb-cls', default=135, type=int, help='nb of classes, IAM=79+1, READ2016=89+1')    
-
-    LAM = subparsers.add_parser("LAM",
-                                description='Dataset parser for training on LAM',
-                                add_help=True,
-                                formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                help="Dataset parser for training on READ")
-
-    LAM.add_argument('--train-data-list', type=str, default='/data_home/jms/iam/train.ln',
-                     help='train data list (gc file)(ln file)')
-    LAM.add_argument('--data-path', type=str, default='/data_home/jms/iam/lines/',
-                     help='train data list')
-    LAM.add_argument('--val-data-list', type=str, default='/data_home/jms/iam/val.ln',
-                     help='val data list')
-    LAM.add_argument('--test-data-list', type=str, default='/data_home/jms/iam/test1.ln',
-                     help='test data list')
-    LAM.add_argument('--nb-cls', default=135, type=int, help='nb of classes, IAM=79+1, READ2016=89+1')
-
-
-    READ = subparsers.add_parser("READ",
-                                 description='Dataset parser for training on READ',
-                                 add_help=True,
-                                 formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-                                 help="Dataset parser for training on READ")
-
-    READ.add_argument('--train-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/READ2016/train.ln',
-                      help='train data list (gc file)(ln file)')
-    READ.add_argument('--data-path', type=str, default='/home/jiamingshi/OCR_datasets_int/READ2016/lines/',
-                      help='train data list')
-    READ.add_argument('--val-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/READ2016/val.ln',
-                      help='val data list')
-    READ.add_argument('--test-data-list', type=str, default='/home/jiamingshi/OCR_datasets_int/READ2016/test.ln',
-                      help='test data list')
-    READ.add_argument('--nb-cls', default=235, type=int, help='nb of classes, IAM=79+1, READ2016=89+1')
+    LSHC.add_argument('--nb-cls', default=235, type=int, help='nb of classes, LSHC=79+1, READ2016=89+1')
 
     return parser.parse_args()
 

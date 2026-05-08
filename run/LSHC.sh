@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES=2 nohup python3 train.py --exp-name iam \
+CUDA_VISIBLE_DEVICES=2 nohup python3 train.py --exp-name lshc \
 --max-lr 1e-3 \
 --train-bs 64 \
 --val-bs 8 \
@@ -13,9 +13,9 @@ CUDA_VISIBLE_DEVICES=2 nohup python3 train.py --exp-name iam \
 --proba 0.5 \
 --alpha 1 \
 --total-iter 100000 \
-IAM &
+LSHC &
 
-CUDA_VISIBLE_DEVICES=0 python3 test.py --exp-name iam \
+CUDA_VISIBLE_DEVICES=0 python3 test.py --exp-name lshc \
 --max-lr 1e-3 \
 --train-bs 128 \
 --val-bs 8 \
@@ -30,7 +30,7 @@ CUDA_VISIBLE_DEVICES=0 python3 test.py --exp-name iam \
 --proba 0.5 \
 --alpha 1 \
 --total-iter 100000 \
-IAM
+LSHC
 
 
 
