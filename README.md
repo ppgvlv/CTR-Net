@@ -116,6 +116,9 @@ The dataset construction pipeline includes:
 | Train      | 463               | 4958               |
 | Validation | 20                | 208                |
 | Test       | 52                | 538                |
+| Test_new   | 28                | 292                |
+
+During the preparation of the LSHC dataset, we organized two test sets for different evaluation purposes: a larger set containing 538 text-line samples for generalization evaluation and a smaller set containing 292 text-line samples for the experiments reported in the CTR-Net paper. However, these two test sets were not clearly distinguished in the original manuscript, and the larger test-set size was inadvertently reported in the dataset statistics. We clarify that the recognition results presented in the paper were obtained using the 292-sample test set. We apologize for this oversight and provide this clarification to avoid confusion and facilitate reproducibility.
 
 After augmentation, the training set expands to approximately:
 
